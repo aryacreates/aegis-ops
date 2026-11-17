@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "AegisOps: Full-Stack Enterprise App",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": ["app.main:api", "--reload", "--port", "8000"],
+      "jinja": true
+    },
+    {
+      "name": "AegisOps: Run Eval Gate (LLM-as-a-Judge)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "app.eval_harness"
+    }
+  ]
+}

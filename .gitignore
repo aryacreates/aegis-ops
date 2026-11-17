@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+aegis_telemetry.db
+.chroma_store/
+.pytest_cache/
