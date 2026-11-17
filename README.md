@@ -1,19 +1,27 @@
-# AegisOps — Google Cloud FDE Enterprise Agent Platform
+# AegisOps — Autonomous Cloud Incident & FinOps Resolution Engine
 
-Production-grade multi-agent SRE & FinOps platform built with **Google ADK**, **Gemini**, **ChromaDB Hybrid RRF RAG**, **BFS Dependency Graph Blast Radius**, **HITL Change Approvals**, **SSE Streaming**, **OTLP Trace Export**, and **Terraform IaC**.
+[![AegisOps CI/CD Gate](https://github.com/aryacreates/aegis-ops/actions/workflows/ci.yml/badge.svg)](https://github.com/aryacreates/aegis-ops/actions/workflows/ci.yml)
+![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-blue)
+![Google ADK](https://img.shields.io/badge/Google-ADK-4285F4)
+![FastAPI](https://img.shields.io/badge/FastAPI-SSE-009688)
+![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42BC)
+
+**AegisOps** is a production-grade multi-agent SRE & FinOps platform built with **Google ADK**, **Gemini 2.5 Flash**, **ChromaDB Hybrid RRF RAG**, **BFS Dependency Graph Blast Radius**, **Human-in-the-Loop (HITL)** change approvals, and **OpenTelemetry (OTLP)** observability.
+
+---
 
 ## Architecture
 
 ```mermaid
 flowchart LR
   UI["Web Console (Live SSE + HITL)"] --> API["FastAPI Gateway"]
-  API --> ADK["ADK App + Context Cache + Telemetry Plugin"]
-  ADK --> ORCH["aegis_orchestrator (Delegation)"]
-  ORCH --> LOOP["sre_resolution_loop (Self-Reflection)"]
-  ORCH --> FIN["finops_specialist"]
+  API --> ADK["Google ADK App + ContextCacheConfig + TelemetryPlugin"]
+  ADK --> ORCH["aegis_orchestrator (Hierarchical Delegation)"]
+  ORCH --> LOOP["sre_resolution_loop (Self-Reflection LoopAgent)"]
+  ORCH --> FIN["finops_specialist (ReAct)"]
   LOOP --> DIAG["diagnostics_agent (ReAct)"]
   LOOP --> CRIT["safety_critic_agent (exit_loop)"]
-  DIAG --> RAG["ChromaDB + RRF Hybrid RAG"]
+  DIAG --> RAG["ChromaDB + Reciprocal Rank Fusion RAG"]
   DIAG --> SQL["SQLite (Read-Only Guardrailed)"]
-  DIAG --> DAG["BFS Blast Radius Graph"]
-  API --> HITL["Change Request Ledger -> Live Remediation"]
+  DIAG --> DAG["BFS Blast Radius Graph O(V+E)"]
+  API --> HITL["HITL Change Ledger -> Live State Remediation"]
